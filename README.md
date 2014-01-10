@@ -17,7 +17,7 @@ The main details of the model in the follow stages are:
   
 Classification
 --------------------
-Firstly, we should to load the Svm model
+Firstly, we should load the Svm model
 ```python
 # Load previus calculated SVM model
 clf = joblib.load('models/svm_model.pkl')

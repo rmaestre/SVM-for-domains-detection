@@ -113,3 +113,6 @@ sample = vectorizer.transform(['We had a shot of scotch whiskey at the hotel bar
 print(sample.shape)
 print(clf.predict(sample))
 
+# <codecell>
+
+

@@ -13,7 +13,7 @@ from sklearn import svm
 from sklearn import cross_validation
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.externals import joblib
-from numpy import *
+from numpy import array
 
 import pickle
 import re

@@ -1,4 +1,3 @@
 # Build and Release Folders
-data/electronics
-data/hotels
+data/rawdata/
 log/

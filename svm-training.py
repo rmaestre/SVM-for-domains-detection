@@ -39,15 +39,18 @@ def insert_vectorized_line(corpus, labels, line, label, vectors_size, corpus_num
 # <codecell>
 
 # Parameters to control the length of the vectors and the Matrix rows
-corpus_number_perdomain = 5000
+corpus_number_perdomain = 8000
 vectors_size = 20
+
+langs = {0: "sp", 1: "en"}
+lang = langs[0]
 
 # DS to save corpus and labels
 corpus = []
 labels = []
 
 # Load corpus from domains review
-domains = {"data/electronics/electronics.txt":0, "data/hotels/hotels.txt":1}
+domains = {"data/%s/electronics/electronics.txt"%lang:0, "data/%s/hotels/hotels.txt"%lang:1}
 for file_name in domains:
     # Load corpus from hotels review
     with open(file_name, "r") as file_in:
@@ -90,8 +93,8 @@ clf = svm.SVC(kernel='linear', probability=False)
 clf.fit(X_train, y_train) 
 
 # Save model to disk and also a vectorizer index
-joblib.dump(clf, 'models/svm_model.pkl')
-with open('models/vectorizer.pkl', 'wb') as o_file:
+joblib.dump(clf, 'models/%s/svm_model.pkl'%lang)
+with open('models/%s/vectorizer.pkl'%lang, 'wb') as o_file:
     pickle.dump(vectorizer, o_file)
 
 # Dump info about the model

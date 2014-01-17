@@ -20,7 +20,7 @@ import time
 
 # Lang options
 langs = {0: "sp", 1: "en"}
-lang = langs[0]
+lang = langs[1]
 
 # Load previus calculated SVM model
 t_start = time.time()

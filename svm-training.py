@@ -13,6 +13,7 @@ from sklearn import svm
 from sklearn import cross_validation
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.externals import joblib
+from numpy import *
 
 import pickle
 import re
@@ -39,11 +40,11 @@ def insert_vectorized_line(corpus, labels, line, label, vectors_size, corpus_num
 # <codecell>
 
 # Parameters to control the length of the vectors and the Matrix rows
-corpus_number_perdomain = 8000
+corpus_number_perdomain = 40000
 vectors_size = 20
 
 langs = {0: "sp", 1: "en"}
-lang = langs[0]
+lang = langs[1]
 
 # DS to save corpus and labels
 corpus = []

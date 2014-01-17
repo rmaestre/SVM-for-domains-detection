@@ -5,25 +5,25 @@ By means of a SVM model (linear kernel) we classify reviews between two specific
 The main details of the model in the follow stages are:
 
 * **Trainning**:
-  * Corpus with 10000 vectors, 5000 per each domain (10000x9024)
-  * SVM with 1496 Supported vectors (1496x9024)
+  * Corpus with 80000 vectors, 40000 per each domain (80000, 23789)
+  * SVM with 6833 Supported vectors (6833, 23789)
   * Label 0 for hotels and label 1 for electronics
-  * K-fold validation (30%): 0.9443%
+  * K-fold validation (30%): 0.9573%
 * **Classification**: In this stage, we load the previous saved models, therefore we have the next elapsed times to: 
-  * Load SVM model: 0.0100 s.
-  * Load Vectorized: 0.2520 s.
-  * Load Total time: 0.2630  s.
-  * Text classification: 0.0030 s.
+  * SVM model elaped time 0.0060 s.
+  * Vectorized elaped time 0.1760 s. 
+  * Whole model elaped time 0.1830 s. 
+  * Text classification: 0.002480 s.
   
 Classification
 --------------------
 Firstly, we should load the Svm model
 ```python
-# Load previus calculated SVM model
-clf = joblib.load('models/svm_model.pkl')
+# Load previus calculated SVM model with a specific language
+clf = joblib.load('models/en/svm_model.pkl')
 
-# Load vectorized index
-with open('models/vectorizer.pkl', 'rb') as i_file:
+# Load vectorized index with a specific language
+with open('models/en/vectorizer.pkl', 'rb') as i_file:
     vectorizer = pickle.load(i_file)
 ```
 With the SVM model and the vectorized DS, we should convert the sample texts into a vector through vectorized DS

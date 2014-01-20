@@ -1,32 +1,17 @@
 # -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
-
-# <codecell>
-
-"""
-Paradigma labs 2014
-"""
-
-# <codecell>
-
-from sklearn import svm
-from sklearn import cross_validation
-from sklearn import metrics
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.externals import joblib
 import pickle
 import time
 
-# <codecell>
+from sklearn.externals import joblib
 
 # Lang options
 langs = {0: "sp", 1: "en"}
 lang = langs[1]
 
-# Load previus calculated SVM model
+# Load previous calculated SVM model
 t_start = time.time()
 clf = joblib.load('models/%s/svm_model.pkl'%lang)
-print("SVM model elaped time %.4f " % (round(time.time()-t_start,3)))
+print("SVM model elapsed time %.4f " % (round(time.time()-t_start,3)))
 
 # Load vectorized index
 t_vectorized_start = time.time()
@@ -36,8 +21,6 @@ with open('models/%s/vectorizer.pkl'%lang, 'rb') as i_file:
 # Debug info
 print("Vectorized elaped time %.4f " % (round(time.time()-t_vectorized_start,3)))
 print("Whole model elaped time %.4f " % (round(time.time()-t_start,3)))
-
-# <codecell>
 
 # Set some samples
 if lang == "en":
@@ -74,11 +57,4 @@ for sample in samples:
     vector = vectorizer.transform([sample[0]]).toarray()
     label = clf.predict(vector)
     print("Labeled: %s Prediction: %s" % (sample[1], label))
-    print("Elaped time %.6f\n" % (round(time.time()-t_start,5)))
-
-# <codecell>
-
-
-# <codecell>
-
-
+    print("Elapsed time %.6f\n" % (round(time.time()-t_start,5)))

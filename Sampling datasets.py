@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
-
-# <codecell>
 
 # Sampling datasets from RawData
 langs = {0: "sp", 1: "en"}
@@ -17,6 +14,5 @@ with open("%s_sampling.txt"%lang, "w") as file_out:
                 file_out.write(line)
             cont += 1
 
-# <codecell>
 
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pickle
 import re
+import string
 
 from sklearn import svm
 from sklearn import cross_validation
@@ -18,20 +19,25 @@ def insert_processed_review(corpus_result, labels_result, review, label, vectors
 #    exclude = set(string.punctuation).union(['¡', '¿', u'£', '€', '$'])  # Spanish
 #    cleaned_review = ''.join(ch if ch not in exclude else ' ' for ch in review)  # list comprehension
 #    words = cleaned_review.split()
-    words = re.findall(r'\b[a-zA-ZáéíóúüÁÉÍÓÚÜ]+\b', line)
+
+    review = re.sub('\x93', ' ', review)
+    review = re.sub('\x94', ' ', review)
+    words = re.findall(r'\b[a-zA-ZáéíóúüÁÉÍÓÚÜ]+\b', review)
     if len(words) > 0:
+        corpus_result.append(' '.join(words))
+        labels_result.append(label)
         # Create vectors of length = vectors_size
-        for i in range(0, len(words), vectors_size):
-            if len(corpus_result) < corpus_number_perdomain:
-                corpus_result.append(' '.join(words[i:i+vectors_size]))
-                labels_result.append(label)
+#        for i in range(0, len(words), vectors_size):
+#            if len(corpus_result) < corpus_number_perdomain:
+#                corpus_result.append(' '.join(words[i:i+vectors_size]))
+#                labels_result.append(label)
 
 # Parameters to control the length of the vectors and the Matrix rows
 corpus_number_perdomain = 40000
 vectors_size = 20
 
 langs = {0: "sp", 1: "en"}
-lang = langs[0]
+lang = langs[1]
 
 # DS to save corpus and labels
 corpus = []

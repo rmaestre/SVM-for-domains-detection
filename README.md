@@ -10,9 +10,9 @@ The main details of the model in the follow stages are:
   * Label 0 for hotels and label 1 for electronics
   * K-fold validation (30%): 0.9573%
 * **Classification**: In this stage, we load the previous saved models, therefore we have the next elapsed times to: 
-  * SVM model elaped time 0.0060 s.
-  * Vectorized elaped time 0.1760 s. 
-  * Whole model elaped time 0.1830 s. 
+  * SVM model elapsed time 0.0060 s.
+  * Vectorized elapsed time 0.1760 s. 
+  * Whole model elapsed time 0.1830 s. 
   * Text classification: 0.002480 s.
   
 Classification
